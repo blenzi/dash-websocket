@@ -3,6 +3,8 @@ from dash_extensions import WebSocket
 
 # Create example app.
 app = DashProxy(prevent_initial_callbacks=True)
+app.title = "Dash-websocket"
+server = app.server  # Gunicorn will be looking for the server attribute of this module
 app.layout = html.Div([
     dcc.Input(id="input", autoComplete="off"), html.Div(id="message"),
     # WebSocket(url="ws://127.0.0.1:5000/ws", id="ws")
@@ -10,8 +12,6 @@ app.layout = html.Div([
     WebSocket(url='wss://user-blenzi-486459-user.user.lab.sspcloud.fr/sample', id="ws")
 ])
 
-def run_app(*args, **kwargs):
-    app.run_server(*args, **kwargs)
 
 @app.callback(Output("ws", "send"), [Input("input", "value")])
 def send(value):

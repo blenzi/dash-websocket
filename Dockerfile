@@ -19,8 +19,8 @@ RUN pip install --upgrade pip setuptools wheel \
 # copy project
 COPY app/ /usr/src/app/
 
-EXPOSE 8050
-#ENTRYPOINT ["gunicorn"]
-#CMD ["main:run_app()", "-b 0.0.0.0"]
-ENTRYPOINT ["python"]
-CMD ["main.py"]
+#EXPOSE 8050
+##ENTRYPOINT ["gunicorn"]
+##CMD ["main:run_app()", "-b 0.0.0.0"]
+#ENTRYPOINT ["python"]
+#CMD ["main.py"]
